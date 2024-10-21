@@ -1,0 +1,16 @@
+# Ignore Eclipse IDE metadata files
+/.metadata/
+/.plugins/
+/.history/
+/.log
+/.txt
+
+# Ignore macOS system files
+.DS_Store
+
+# Ignore log files
+*.log
+
+# Ignore compiled files (optional)
+*.class
+*.jar
