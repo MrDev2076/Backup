@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Preview</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/public/css/style.css">
+    <style>
+        body {
+            background-color: #f4f6f9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+        }
+
+        .resume-container {
+            background-color: #fff;
+            padding: 30px;
+            margin-top: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            /* Background image styling */
+            background-image: url('https://png.pngtree.com/background/20220714/original/pngtree-simple-and-fresh-series-light-blue-resume-background-blue-picture-image_1610943.jpg');
+            background-repeat: no-repeat;
+            background-size: cover; /* Adjusts the size of the background image */
+            /*   background-position:0cqmax; Center the image and move it upwards */
+            background-attachment: fixed; /* Ensures the image remains in place during scroll */
+            margin: 50px auto; /* Centers the container and reduces margin */
+        }
+
+
+        .resume-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .resume-header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .resume-header p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: #007bff;
+            left: 0;
+            bottom: 0;
+        }
+
+        .list-group-item {
+            border: none;
+            padding-left: 10px;
+            padding-right: 0;
+        }
+
+        .list-group-item i {
+            margin-right: 10px;
+            color: #007bff;
+        }
+
+      
+        .skills-list li {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 8px 12px;
+            margin: 5px 5px 0 10px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .download-btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .download-btn button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-btn button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .resume-header h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="resume-container">
+            <div class="resume-header">
+                <h1 style="margin-top: 30px;"><%= user.name %></h1>
+                <!--p><%= user.profession || "Your Profession" %></p-->
+            </div>
+
+            <div class="row">
+                <!-- Contact Information -->
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <h3 class="section-title">Contact Information</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <i class="fas fa-envelope"></i> <a href="mailto:<%= user.email %>"><%= user.email %></a>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fas fa-phone"></i> <a href="tel:<%= user.phone %>"><%= user.phone %></a>
+                            </li>
+                            <% if (user.address) { %>
+                                <li class="list-group-item">
+                                    <i class="fas fa-map-marker-alt"></i> <%= user.address %>
+                                </li>
+                            <% } %>
+                        </ul>
+                    </div>
+                </div>
+
+             <!-- Languages -->
+<% if (user.languages) { %>
+    <div class="col-md-6">
+        <div class="mb-4">
+            <h3 class="section-title">Languages</h3>
+            <ul class="list-group">
+                <% user.languages.split(',').forEach(function(language) { %>
+                    <li class="list-group-item">
+                        <i class="fas fa-language"></i> <%= language.trim() %>
+                    </li> 
+                <% }); %>
+            </ul>
+        </div>
+    </div>
+<% } %>
+            </div>
+
+            <!-- About Section -->
+            <% if (user.about) { %>
+                <div class="mb-4">
+                    <h3 class="section-title">About</h3>
+                    <b><%= user.about %></b>
+                </div>
+            <% } %>
+
+            <!-- Education -->
+            <% if (user.education) { %>
+                <div class="mb-4">
+                    <h3 class="section-title">Education</h3>
+                    <ul class="list-group">
+                        <% user.education.split('\n').forEach(function(edu) { %>
+                            <li class="list-group-item">
+                                <i class="fas fa-graduation-cap"></i> <%= edu %>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% } %>
+
+            <!-- Experience -->
+            <% if (user.experience) { %>
+                <div class="mb-4">
+                    <h3 class="section-title">Experience</h3>
+                    <ul class="list-group">
+                        <% user.experience.split('\n').forEach(function(exp) { %>
+                            <li class="list-group-item">
+                                <i class="fas fa-briefcase"></i> <%= exp %>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% } %>
+
+            <!-- Certifications -->
+            <% if (user.certifications) { %>
+                <div class="mb-4">
+                    <h3 class="section-title">Certifications</h3>
+                    <ul class="list-group">
+                        <% user.certifications.split('\n').forEach(function(cert) { %>
+                            <li class="list-group-item">
+                                <i class="fas fa-certificate"></i> <%= cert %>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% } %>
+
+            <!-- Workshops & Training -->
+            <% if (user.workshops) { %>
+                <div class="mb-4">
+                    <h3 class="section-title">Workshops & Training</h3>
+                    <ul class="list-group">
+                        <% user.workshops.split('\n').forEach(function(workshop) { %>
+                            <li class="list-group-item">
+                                <i class="fas fa-chalkboard-teacher"></i> <%= workshop %>
+                            </li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% } %>
+
+            <!-- Skills -->
+            <% if (user.skills) { %>
+                <div class="mb-4">
+                    <h3 class="section-title">Skills</h3>
+                    <ul class="skills-list">
+                        <% user.skills.split(',').forEach(function(skill) { %>
+                            <li><%= skill.trim() %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% } %>
+
+            <!-- Download Button -->
+            <div class="download-btn">
+                <form action="/api/generate-pdf" method="POST">
+                    <input type="hidden" name="name" value="<%= user.name %>">
+                    <input type="hidden" name="email" value="<%= user.email %>">
+                    <input type="hidden" name="phone" value="<%= user.phone %>">
+                    <input type="hidden" name="about" value="<%= user.about %>">
+                    <input type="hidden" name="address" value="<%= user.address %>">
+                    <input type="hidden" name="education" value="<%= user.education %>">
+                    <input type="hidden" name="experience" value="<%= user.experience %>">
+                    <input type="hidden" name="certifications" value="<%= user.certifications %>">
+                    <input type="hidden" name="workshops" value="<%= user.workshops %>">
+                    <input type="hidden" name="languages" value="<%= user.languages %>">
+                    <input type="hidden" name="skills" value="<%= user.skills %>">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-download"></i> Download Resume PDF
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Optional: Add any custom JavaScript here
+        // For example, you can add functionality to toggle sections
+        document.addEventListener('DOMContentLoaded', function() {
+            const sectionTitles = document.querySelectorAll('.section-title');
+            sectionTitles.forEach(title => {
+                title.style.cursor = 'pointer';
+                title.addEventListener('click', function() {
+                    const content = this.nextElementSibling;
+                    if (content.style.display === 'none' || content.style.display === '') {
+                        content.style.display = 'block';
+                    } else {
+                        content.style.display = 'none';
+                    }
+                });
+            });
+
+            // Initially hide all sections except Contact Information and Skills
+            document.querySelectorAll('.list-group').forEach(group => {
+                group.style.display = 'none';
+            });
+            document.querySelectorAll('.skills-list').forEach(skills => {
+                skills.style.display = 'none';
+            });
+
+            // Show Contact Information by default
+            const contactInfo = document.querySelector('.resume-container .contact-info .list-group');
+            if (contactInfo) contactInfo.style.display = 'block';
+
+            // Show Skills by default
+            const skillsList = document.querySelector('.skills-list');
+            if (skillsList) skillsList.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

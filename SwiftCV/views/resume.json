@@ -1,0 +1,40 @@
+{
+    "name": "Mr_Bot",
+    "email": "info@packetprep.com",
+    "phone": "7901239016",
+    "about": "Living life as a nature.",
+    "address": "Vaaradhi, Vijayawada, Mangalagiri",
+    "education": [
+        "Btech(EEE) - 2023 - Vignan",
+        "Dip(EEE) - 2020 - MBTS"
+    ],
+    "experience": [
+        "Developer at VC since 2023",
+        "Photographer for Insta since 2023"
+    ],
+    "certifications": [
+        "EFF2-E2RA certified Developer",
+        "De24",
+        "Asper"
+    ],
+    "workshops": [
+        "Sample Mining projects - 1 with me",
+        "Sample Mining projects - 2"
+    ],
+    "languages": [
+        "Telugu",
+        "Hindi",
+        "English"
+    ],
+    "skills": [
+        "Java",
+        "Python",
+        "HTML",
+        "CSS",
+        "MERN",
+        "Flutter",
+        "SQL",
+        "Bootstrap",
+        "Tailwind"
+    ]
+}

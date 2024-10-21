@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+
+        .resume-header {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 5px 5px 0 0;
+            margin-bottom: 20px;
+        }
+
+        .resume-section {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .content {
+            display: none;
+        }
+
+        .contact-info {
+            margin-bottom: 20px;
+        }
+
+        .list-group-item {
+            border: none;
+        }
+
+        .skills {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .skills li {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 5px 10px;
+            margin: 5px;
+            border-radius: 20px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container mt-5">
+        <div class="resume-header">
+            <h1><%= name %></h1>
+            <p class="lead">Your Tagline or Profession</p>
+        </div>
+
+        <div class="resume-section contact-info">
+            <h2 onclick="toggleContent(this)">Contact Information</h2>
+            <div class="content">
+                <ul class="list-group">
+                    <li class="list-group-item">Email: <%= email %></li>
+                    <li class="list-group-item">Phone: <%= phone %></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2 onclick="toggleContent(this)">About</h2>
+            <div class="content">
+                <p><%= about %></p>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2 onclick="toggleContent(this)">Address</h2>
+            <div class="content">
+                <p><%= address %></p>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2 onclick="toggleContent(this)">Education</h2>
+            <div class="content">
+                <p><%= education %></p>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2 onclick="toggleContent(this)">Experience</h2>
+            <div class="content">
+                <p><%= experience %></p>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2 onclick="toggleContent(this)">Certifications</h2>
+            <div class="content">
+                <p><%= certifications %></p>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2 onclick="toggleContent(this)">Workshops & Training</h2>
+            <div class="content">
+                <p><%= workshops %></p>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2 onclick="toggleContent(this)">Languages</h2>
+            <div class="content">
+                <p><%= languages %></p>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h2 onclick="toggleContent(this)">Skills</h2>
+            <div class="content">
+                <ul class="skills">
+                    <li><%= skills %></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function toggleContent(element) {
+            const content = element.nextElementSibling;
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+            } else {
+                content.style.display = "none";
+            }
+        }
+
+        // Initially hide all content sections
+        document.querySelectorAll('.content').forEach(content => {
+            content.style.display = "none";
+        });
+    </script>
+</body>
+
+</html>
