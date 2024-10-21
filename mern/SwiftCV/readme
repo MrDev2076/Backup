@@ -1,0 +1,21 @@
+project folder structure :
+
+SwiftCV/
+│
+├── public/              
+│   ├── css/             # Stylesheets (optional)
+│   │   └── style.css
+│   └── js/              # Client-side JavaScript (optional)
+│       └── script.js
+│
+├── views/               # HTML templates
+│   ├── resume_template.ejs   # Resume template (dynamic HTML)
+│   └── form.ejs              # Web form for user input
+│
+├── routes/              # Routes for handling requests
+│   └── resumeRoutes.js        # Route for form submissions and resume generation
+│
+├── app.js               # Main server file
+├── package.json         # Node.js dependencies
+└── utils/               # Utility functions (PDF generation)
+    └── pdfGenerator.js

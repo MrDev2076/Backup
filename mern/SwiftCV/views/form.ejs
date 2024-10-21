@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Generator</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Resume Generator</h1>
+        <form action="/api/generate" method="POST" enctype="multipart/form-data" class="mt-4 bg-secondary p-3 m-4 rounded">
+            <!-- Header Section -->
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
+            </div>
+            <!--div class="form-group">
+                <label for="profile-pic">Profile Picture:</label>
+                <input type="file" id="profile-pic" name="profile-pic" class="form-control pb-5"  accept="image/*">
+            </div-->
+
+            <!-- Summary -->
+            <div class="form-group">
+                <label for="summary">Summary:</label>
+                <textarea id="summary" name="summary" class="form-control" rows="3" placeholder="Enter a brief summary about yourself"></textarea>
+            </div>
+
+            <!-- Objective -->
+            <div class="form-group">
+                <label for="objective">Objective:</label>
+                <textarea id="objective" name="objective" class="form-control" rows="3" placeholder="Enter your career objective"></textarea>
+            </div>
+
+            <!-- Education -->
+            <div class="form-group">
+                <label for="education">Education:</label>
+                <textarea id="education" name="education" class="form-control" rows="3" placeholder="Enter your educational background" required></textarea>
+            </div>
+
+            <!-- Experience -->
+            <div class="form-group">
+                <label for="experience">Experience:</label>
+                <textarea id="experience" name="experience" class="form-control" rows="4" placeholder="Enter your work experience" required></textarea>
+            </div>
+
+            <!-- Skills -->
+            <div class="form-group">
+                <label for="skills">Skills:</label>
+                <input type="text" id="skills" name="skills" class="form-control" placeholder="Enter your skills, separated by commas" required>
+            </div>
+
+            <!-- Certifications -->
+            <div class="form-group">
+                <label for="certifications">Certifications:</label>
+                <textarea id="certifications" name="certifications" class="form-control" rows="3" placeholder="Enter your certifications"></textarea>
+            </div>
+
+            <!-- Achievements -->
+            <div class="form-group">
+                <label for="achievements">Achievements:</label>
+                <textarea id="achievements" name="achievements" class="form-control" rows="3" placeholder="Enter your achievements"></textarea>
+            </div>
+
+            <!-- Projects -->
+            <div class="form-group">
+                <label for="projects">Projects:</label>
+                <textarea id="projects" name="projects" class="form-control" rows="3" placeholder="Enter your projects"></textarea>
+            </div>
+
+            <!-- Publications -->
+            <div class="form-group">
+                <label for="publications">Publications:</label>
+                <textarea id="publications" name="publications" class="form-control" rows="3" placeholder="Enter your publications"></textarea>
+            </div>
+
+            <!-- Languages -->
+            <div class="form-group">
+                <label for="languages">Languages:</label>
+                <input type="text" id="languages" name="languages" class="form-control" placeholder="Enter languages you speak, separated by commas">
+            </div>
+
+            <!-- Awards -->
+            <div class="form-group">
+                <label for="awards">Awards:</label>
+                <textarea id="awards" name="awards" class="form-control" rows="3" placeholder="Enter any awards"></textarea>
+            </div>
+
+            <!-- Hobbies -->
+            <div class="form-group">
+                <label for="hobbies">Hobbies:</label>
+                <input type="text" id="hobbies" name="hobbies" class="form-control" placeholder="Enter your hobbies, separated by commas">
+            </div>
+
+            <!-- Interests -->
+            <div class="form-group">
+                <label for="interests">Interests:</label>
+                <input type="text" id="interests" name="interests" class="form-control" placeholder="Enter your interests, separated by commas">
+            </div>
+
+            <!-- Volunteer -->
+            <div class="form-group">
+                <label for="volunteer">Volunteer Work:</label>
+                <textarea id="volunteer" name="volunteer" class="form-control" rows="3" placeholder="Enter your volunteer work"></textarea>
+            </div>
+
+            <!-- References -->
+            <div class="form-group">
+                <label for="references">References:</label>
+                <textarea id="references" name="references" class="form-control" rows="3" placeholder="Enter references"></textarea>
+            </div>
+
+            <!-- Contact -->
+            <div class="form-group">
+                <label for="contact">Contact:</label>
+                <input type="text" id="contact" name="contact" class="form-control" placeholder="Enter your contact number" required>
+            </div>
+
+            <!-- Portfolio -->
+            <div class="form-group">
+                <label for="portfolio">Portfolio Link:</label>
+                <input type="url" id="portfolio" name="portfolio" class="form-control" placeholder="Enter your portfolio URL">
+            </div>
+
+            <!-- Trainings -->
+            <div class="form-group">
+                <label for="trainings">Trainings:</label>
+                <textarea id="trainings" name="trainings" class="form-control" rows="3" placeholder="Enter any trainings you've completed"></textarea>
+            </div>
+
+            <!-- Workshops -->
+            <div class="form-group">
+                <label for="workshops">Workshops:</label>
+                <textarea id="workshops" name="workshops" class="form-control" rows="3" placeholder="Enter workshops you've attended"></textarea>
+            </div>
+
+            <!-- Social Media Links -->
+            <div class="form-group">
+                <label for="gitlink">GitHub Link:</label>
+                <input type="url" id="gitlink" name="gitlink" class="form-control" placeholder="Enter your GitHub profile URL">
+            </div>
+            <div class="form-group">
+                <label for="linkedin">LinkedIn Link:</label>
+                <input type="url" id="linkedin" name="linkedin" class="form-control" placeholder="Enter your LinkedIn profile URL">
+            </div>
+            <div class="form-group">
+                <label for="social-media">Other Social Media Links:</label>
+                <textarea id="social-media" name="social-media" class="form-control" rows="3" placeholder="Enter any other social media URLs"></textarea>
+            </div>
+
+                  <!-- New Template Selection -->
+                  <div class="form-group">
+                    <label for="template">Select Resume Template:</label>
+                    <select id="template" name="template" class="form-control" required>
+                        <option value="" disabled selected>Select a template</option>
+                        <option value="https://www.canva.com/templates/resumes/">Canva</option>
+                        <option value="https://www.resume.com/">Resume.com</option>
+                        <option value="https://novoresume.com/">Novoresume</option>
+                        <option value="https://docs.google.com/document/u/0/">Google Docs</option>
+                    </select>
+                </div>
+           
+        
+
+            <!-- Submit -->
+            <button type="submit" class="btn btn-primary btn-block">Generate Resume</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies (optional) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

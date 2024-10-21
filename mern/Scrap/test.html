@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        textarea {
+            resize: vertical;
+            height: 80px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .template-preview {
+            margin-top: 20px;
+        }
+        .template-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+        .template {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .template:hover {
+            transform: scale(1.05);
+        }
+        .template img {
+            width: 100%;
+            height: auto;
+        }
+        .selected {
+            border: 2px solid #4CAF50;
+        }
+        #selectedTemplateText {
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Resume Data Input Form</h1>
+    <form>
+        <h2>Personal Information</h2>
+        <label for="fullName">Full Name:</label>
+        <input type="text" id="fullName" name="fullName" required>
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" required>
+
+        <label for="email">Email Address:</label>
+        <input type="text" id="email" name="email" required>
+
+        <label for="linkedin">LinkedIn Profile (optional):</label>
+        <input type="text" id="linkedin" name="linkedin">
+
+        <label for="location">Location (City, State):</label>
+        <input type="text" id="location" name="location" required>
+
+        <h2>Objective or Summary Statement</h2>
+        <label for="summary">Objective/Summary:</label>
+        <textarea id="summary" name="summary"></textarea>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="template-preview">
+        <h2>Choose a Resume Template</h2>
+        <div class="template-container">
+            <!-- Example Templates -->
+            <div class="template" onclick="selectTemplate(this)">
+                <img src="template1.png" alt="Template 1">
+                <p>Template 1</p>
+            </div>
+            <div class="template" onclick="selectTemplate(this)">
+                <img src="template2.png" alt="Template 2">
+                <p>Template 2</p>
+            </div>
+            <div class="template" onclick="selectTemplate(this)">
+                <img src="template3.png" alt="Template 3">
+                <p>Template 3</p>
+            </div>
+            <div class="template" onclick="selectTemplate(this)">
+                <img src="template4.png" alt="Template 4">
+                <p>Template 4</p>
+            </div>
+            <!-- Add more templates as needed -->
+        </div>
+        <p id="selectedTemplateText">No template selected.</p>
+    </div>
+</div>
+
+<script>
+    function selectTemplate(element) {
+        // Remove the 'selected' class from all templates
+        const templates = document.querySelectorAll('.template');
+        templates.forEach(template => {
+            template.classList.remove('selected');
+        });
+
+        // Add the 'selected' class to the clicked template
+        element.classList.add('selected');
+        document.getElementById('selectedTemplateText').innerText = `Selected Template: ${element.querySelector('p').innerText}`;
+    }
+</script>
+
+</body>
+</html>
